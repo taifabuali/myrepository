@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://dv1fgvrse04y7"]
+
+[ext_resource type="Script" uid="uid://dya46ef3aot0c" path="res://dimond.gd" id="1_fk5b5"]
+[ext_resource type="Texture2D" uid="uid://blj25b3sqn2rb" path="res://assets/Rocky Roads/Rocky Roads/Objects/gem.png" id="1_ijtix"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk5b5"]
+atlas = ExtResource("1_ijtix")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md74i"]
+atlas = ExtResource("1_ijtix")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gif8w"]
+atlas = ExtResource("1_ijtix")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iaim0"]
+atlas = ExtResource("1_ijtix")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgtxo"]
+atlas = ExtResource("1_ijtix")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d0bxp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk5b5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md74i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gif8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iaim0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgtxo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mh527"]
+radius = 5.0
+
+[node name="Diamond" type="Area2D" groups=["collectibles"]]
+script = ExtResource("1_fk5b5")
+collectible_type = "diamond"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d0bxp")
+autoplay = "default"
+frame = 1
+frame_progress = 0.779027
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mh527")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

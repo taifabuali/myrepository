@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx0p2gxx8akm8"]
+
+[ext_resource type="Script" uid="uid://bawmdnq23ta2" path="res://danger_zone.gd" id="1_frfhk"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mbyws"]
+
+[node name="DangerZone" type="Area2D"]
+script = ExtResource("1_frfhk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_mbyws")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
